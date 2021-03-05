@@ -2,43 +2,45 @@
 Installation
 =============
 
-.. note:: 
-  
+.. note::
+
   **Quick note on ways of installation**
 
-  Assumes a compatible GPU device with installed CUDA, git and cmake (details below).
+  *Requirements (details below):*
 
-  - ``pip`` installation
+  - a compatible GPU device with CUDA divers & toolkit
 
-    .. code-block:: none
-      
-      pip install --no-binary :all: --verbose nipet
+  - ``git``
 
-    Apart from ``nipet`` itself, it will also install all relevant packages, including ``nimpa``.
+  - Python 3.6+
 
-  - from source using ``git`` and ``pip``/setup.py
+  *Installation:*
 
-    .. code-block:: none
+  .. code-block:: none
 
-      git clone https://github.com/NiftyPET/NIMPA.git
-      git clone https://github.com/NiftyPET/NIPET.git
+    pip install niftypet
 
-      cd ./NIMPA
-      pip install --no-binary :all: --verbose -e .
-      cd ../NIPET
-      pip install --no-binary :all: --verbose -e .
+  This will install all relevant packages, including `nipet <https://github.com/NiftyPET/NIPET>`_ and `nimpa <https://github.com/NiftyPET/NIMPA>`_.
+
+  *Installation (advanced):*
+
+  .. code-block:: none
+
+    git clone https://github.com/NiftyPET/NIMPA.git
+    git clone https://github.com/NiftyPET/NIPET.git
+
+    export PATHTOOLS=$HOME/NiftyPET_tools
+    export HMUDIR=$HOME/mmr_hardwareumaps
+
+    conda install -c conda-forge python=3 \
+        numpy scipy scikit-image matplotlib ipykernel ipywidgets
+    pip install --verbose -e ./NIMPA
+    pip install --verbose -e ./NIPET
+
+  This will install an \"editable\" distribution at the source locations for both ``nimpa`` and ``nipet`` (allowing easy modification and/or updating using ``git pull``). Detailed steps for installation are given below.
 
 
-    This will install \"editable\" distribution at the source locations for both, ``nimpa`` and ``nipet``.  This way the packages can be modified and/or updated using ``git pull``.  The detailed steps for installation are given below.
-
-
-
-
-
-
-
-
-*NiftyPET* is a `Python name space package <https://packaging.python.org/guides/packaging-namespace-packages>`_, encompassing the two packages: ``nimpa`` and ``nipet``. Currently, the packages are available for Python 2.7 in Linux and Windows systems. So far, it has been deployed and tested on CentOS 6.8 and 7, Ubuntu 14.04, 16.04 and 18.04 as well as Windows 10 (limited), all accompanied with Python 2.7 distribution from Anaconda while using Python C extensions for the core CUDA routines.  Linux systems are recommended due to their robustness and stability and the support for Windows is very limited.
+*NiftyPET* is a `Python namespace package <https://packaging.python.org/guides/packaging-namespace-packages>`_, primarily encompassing the two packages ``nimpa`` and ``nipet``. Currently, these are available for Python 3.6 or greater for Linux and Windows systems. It has been deployed and tested on CentOS 6.8 and 7, Ubuntu 14.04, 16.04, 18.04 and 20.04, as well as Windows 10 (limited) -- including Python C extensions for the core CUDA routines. Linux systems are recommended due to their robustness and stability (support for Windows is comparatively limited).
 
 
 Dependencies
@@ -47,16 +49,15 @@ Dependencies
 Hardware
 ^^^^^^^^
 
-* **GPU device**: Supported are GPU devices from NVIDIA with the compute capability of at least 3.5 (e.g., NVIDIA Tesla K20/40).  It is recommended to have at least 5 GB of GPU memory.  *NiftyPET* supports multiple CUDA devices and so far, the following devices have been tested with *NiftyPET*: 
+* **GPU device**: Supported are GPU devices from NVIDIA with the compute capability of at least 3.5 (e.g., NVIDIA Tesla K20/40).  It is recommended to have at least 5 GB of GPU memory.  *NiftyPET* supports multiple CUDA devices and so far, the following devices have been tested with *NiftyPET*:
 
    * NVIDIA Tesla K20/40,
    * NVIDIA Titan Xp,
    * NVIDIA GeForce GTX 1060,
    * NVIDIA GeForce GTX 1080 /Ti,
    * NVIDIA  Tesla V100.
-   
-* **CPU host**: The GPU device can be accessed by a CPU host, with a reasonable computing power for some other image processing routines (e.g., image registration, etc.).  It is recommended to have at least 16 GB of RAM, although we have managed to run dynamic reconstruction using old PC workstations with as little as 11 GB of RAM.
 
+* **CPU host**: The GPU device can be accessed by a CPU host, with a reasonable computing power for some other image processing routines (e.g., image registration, etc.).  It is recommended to have at least 16 GB of RAM, although we have managed to run dynamic reconstruction using old PC workstations with as little as 11 GB of RAM.
 
 Software
 ^^^^^^^^
@@ -67,26 +68,26 @@ Software
 
   On Linux systems it can be installed as follows:
 
-  * Ubuntu: 
+  * Ubuntu:
 
     .. code-block:: none
 
       apt-get install build-essential
 
-  
-  * CentOS: 
+
+  * CentOS:
 
     .. code-block:: none
 
       yum group install "Development Tools"
 
 
-*  **CUDA toolkit**: a parallel computing platform and programming model, which includes CUDA compiler (NVCC) and runtime API.  The latest CUDA toolkit can be obtained for free from https://developer.nvidia.com/cuda-downloads.  For any specific operating system follow the CUDA installation guide at https://docs.nvidia.com/cuda/index.html.  
+*  **CUDA toolkit**: a parallel computing platform and programming model, which includes CUDA compiler (NVCC) and runtime API.  The latest CUDA toolkit can be obtained for free from https://developer.nvidia.com/cuda-downloads.  For any specific operating system follow the CUDA installation guide at https://docs.nvidia.com/cuda/index.html.
 
   .. tip::
 
     In CentOS, it is necessary to install DKMS (Dynamic Kernel Module Support), which can be obtained from https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm. Then, it can be installed as follows:
-   
+
     .. code-block:: none
 
       rpm -ivh epel-release-latest-7.noarch.rpm
@@ -94,7 +95,7 @@ Software
 
 
   Make sure that CUDA is installed with appropriate paths to CUDA resources setup, that is, for CUDA 10.0 on Linux systems, it is:
-   
+
   .. code-block:: none
 
     export PATH=/usr/local/cuda-10.0/bin:$PATH
@@ -116,7 +117,7 @@ Software
   * CentOS:
 
     .. code-block:: none
-   
+
       yum install git
 
 * **cmake**: a tool for cross-platform software package building, which can be downloaded freely from https://cmake.org/install/. For the Ubuntu distribution, cmake together with the user GUI can be installed as follows:
@@ -151,16 +152,14 @@ Software
 
 .. _niftypet-install:
 
+
 *NiftyPET* installation
 -----------------------
-
-
 
 Using ``pip``
 ^^^^^^^^^^^^^
 
 * NiftyPET:``nimpa``
-
 
   To install ``nimpa`` with CUDA source compilation for the given CUDA version and operating system (Linux is preferred), simply type:
 
@@ -168,9 +167,7 @@ Using ``pip``
 
     pip install --no-binary :all: --verbose nimpa
 
-
 * NiftyPET:``nipet``
-
 
   To install ``nipet``, the core of NiftyPET image reconstruction, type:
 
@@ -180,9 +177,6 @@ Using ``pip``
 
 
   This will also install ``nimpa`` if it is not yet installed and will compile the CUDA C source code for the user's Linux system and CUDA version (>=7.0).
-
-
-
 
 From source using ``git`` and ``pip``/``setup.py``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,15 +210,13 @@ Identically for ``nipet``, run one of the following:
 ::
 
   1) python setup.py install
-  2) pip install --no-binary :all: --verbose . 
+  2) pip install --no-binary :all: --verbose .
   3) pip install --no-binary :all: --verbose -e .
 
 
 The installation will call on ``cmake``, which will run automatically and generate make files, and then run ``make`` to build all the CUDA C routines and Python C extensions.  Following this, the compiled Python modules will be installed into the specific Python package location.
 
-
-
-Third party software installed with *NiftyPET* 
+Third party software installed with *NiftyPET*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The installation *NiftyPET* will automatically install additional third party software, used for extra capabilities, such as image registration and conversion.  *NiftyReg* and *dcm2niix* will be installed in ``NiftyPET_tools`` folder, in your home directory:
@@ -238,8 +230,6 @@ The installation *NiftyPET* will automatically install additional third party so
     git clone https://github.com/KCL-BMEIS/niftyreg/
 
   Some details for a manual install can be found at http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg_install (can be outdated).
-
-
 
 Installation in Conda environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -268,7 +258,7 @@ It may be necessary to install additional required packages, like the following:
 
 ::
 
-  conda install -c anaconda pycurl 
+  conda install -c anaconda pycurl
   conda install -c anaconda matplotlib
   conda install -c anaconda ipython
   conda install -c conda-forge nibabel
@@ -302,7 +292,7 @@ Paths for the third-party software
 If for some reason, the paths to the tools for image registration, resampling and conversion (DICOM -> NIfTI) are found incorrect, it can be checked by viewing ``resources.py`` file in ``~/.niftypet`` folder in Linux (for ``conda`` environment there will be an additional folder with the name of the environment, which contains ``resources.py``, specific for the environment).  In Windows, it is located in the local application data folder.   It is recommended that the paths and device properties are not manually edited, but are changed rather by rerunning the installation.
 
 ::
-  
+
   # paths to apps and tools needed by NiftyPET
   ### start NiftyPET tools ###
   PATHTOOLS = '/path/to/NiftyPET_tools/'
@@ -315,9 +305,7 @@ If for some reason, the paths to the tools for image registration, resampling an
 Note that the hardware :math:`\mu`-maps are not distributed with this software, and have to be obtained from the Siemens Biograph mMR scanner.
 
 
-
 Jupyter Notebook
 ----------------
 
 Jupyter Notebook is a wonderful tool, useful for sharing and replicating image reconstruction methods written in Python.  It allows introspection, plotting and sharing of any intermediate results (e.g., sinograms and images generated during the  reconstruction pipeline) or any end result.  For this reason, it is best when Python and iPython are installed through Anaconda, which by default includes Jupyter Notebook.  See http://jupyter.readthedocs.io/en/latest/tryjupyter.html for more details and http://jupyter.readthedocs.io/en/latest/install.html for a manual installation.
-
