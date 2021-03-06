@@ -1,0 +1,22 @@
+name: niftypet
+channels:
+- conda-forge
+- defaults
+dependencies:
+# base
+- ipykernel
+- ipywidgets
+- pip
+- python=3
+- setuptools
+- setuptools_scm
+- toml
+# extras
+- matplotlib
+- nibabel
+- numpy
+- pydicom
+- scikit-image
+- scipy
+- pip:
+  - niftypet
