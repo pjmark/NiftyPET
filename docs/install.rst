@@ -145,7 +145,7 @@ Software
 
     *Jupyter Notebook* (``notebook``) is a useful development interface.
 
-    Additionally, when using Anacoda or Minconda, it is recommended to use ``conda`` to install some dependencies rather than rely on NiftyPET to automatically install them via ``pip``.
+    Additionally, when using Anacoda or Minconda, it is recommended to use ``conda`` to install some dependencies rather than rely on *NiftyPET* to automatically install them via ``pip``.
 
     .. code:: sh
 
@@ -189,7 +189,7 @@ To install the entire suite of packages, use:
 
   * nipet_
 
-    The core of NiftyPET image reconstruction.
+    The core of *NiftyPET* image reconstruction.
 
     .. code:: sh
 
@@ -222,71 +222,82 @@ Identically for ``nipet``, run one of the following:
 
 The installation will download and call on ``cmake``, which will run automatically and generate Ninja files, and then run ``ninja`` to build all the CUDA C routines and Python C extensions. Following this, the compiled Python modules will be installed into the specific Python package location.
 
-.. warning::
-
-  Do we need the rest of this? Maybe move elsewhere?
-
 Third party software installed with *NiftyPET*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The installation *NiftyPET* will automatically install additional third party software, used for extra capabilities, such as image registration and conversion.  *NiftyReg* and *dcm2niix* will be installed in ``NiftyPET_tools`` folder, in your home directory:
+*NiftyPET* will automatically install additional third party software (used for capabilities such as image registration and conversion). *NiftyReg* and *dcm2niix* will be installed in the ``NiftyPET_tools`` folder specified during the installation process:
 
-* **dcm2niix**: conversion of DICOM images to NIfTI images (v1.0.20171204).  If for some reason the automatic installation fails (e.g., due to a problem with dependencies), try to download the source code from https://github.com/rordenlab/dcm2niix and compile it, or use the pre-complied version with current release available at https://github.com/rordenlab/dcm2niix/releases/.
+- **dcm2niix**: conversion of DICOM images to NIfTI images (v1.0.20171204).  If for some reason the automatic installation fails (e.g., due to a problem with dependencies), try to download the source code from https://github.com/rordenlab/dcm2niix and compile it, or use the pre-complied version with current release available at https://github.com/rordenlab/dcm2niix/releases/.
 
-* **NiftyReg**: image registration and resampling tool.  The stable version (16 Nov 2017) is fetched and installed automatically using
+- **NiftyReg**: image registration and resampling tool.  The stable version (16 Nov 2017) is fetched and installed automatically from https://github.com/KCL-BMEIS/niftyreg. Some details for a manual install can be found at http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg_install (can be outdated).
 
-  ::
+Conda environments
+^^^^^^^^^^^^^^^^^^
 
-    git clone https://github.com/KCL-BMEIS/niftyreg/
-
-  Some details for a manual install can be found at http://cmictig.cs.ucl.ac.uk/wiki/index.php/NiftyReg_install (can be outdated).
-
-Installation in Conda environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-One of the advantages of using ``conda`` (part of Anacoda) and Python is the possibility of having separate environments for different versions of Python and/or packages installed in them.  Thus, ``conda`` environments enable the user to set up *NiftyPET* differently for various applications (e.g., different image resolution, radio-pharmaceutical-optimised attenuation and/or scatter correction, etc.). Below is demonstrated an installation of NiftyPET into environment called `niftypet`.
+One of the advantages of using ``conda`` is the possibility of having separate environments for different versions of Python and/or packages installed in them. Thus ``conda`` environments enable the user to set up *NiftyPET* differently for various applications (e.g., different image resolution, radio-pharmaceutical-optimised attenuation and/or scatter correction, etc.). Below is an example of installation of *NiftyPET* into environment called `niftypet`.
 
 Create environment called, for example, `niftypet`, by running this command:
 
-::
+.. code:: sh
 
   conda create --name niftypet
 
-Activate the conda environment in Linux:
+Activate the conda environment:
 
-::
+.. code:: sh
 
-  source activate niftypet
+  conda activate niftypet
 
-in Windows:
+.. note::
 
-::
+  On Windows, this may be simply  ``activate niftypet``, and on Linux ``source activate niftypet``.
 
-  activate niftypet
+.. tip::
 
-It may be necessary to install additional required packages, like the following:
+  It may be quicker to also install additional required packages with ``conda`` (rather than relying on ``pip`` to automatically do this during installation of ``niftypet``):
 
-::
+  .. code:: sh
 
-  conda install -c anaconda pycurl
-  conda install -c anaconda matplotlib
-  conda install -c anaconda ipython
-  conda install -c conda-forge nibabel
-  conda install -c conda-forge pydicom
+    # useful mathematical & plotting libraries
+    conda install -c conda-forge python=3 numpy scipy scikit-image matplotlib nibabel pydicom
+    # jupyter noebook support
+    conda install -c conda-forge python=3 ipykernel ipywidgets
 
+*NiftyPET* can now be installed as described above in :ref:`niftypet-install`, while making sure that the ``conda`` environment is active.
 
-*NiftyPET* can now be installed as described above in :ref:`niftypet-install`, while making sure that the ``conda`` environment is active.  Please note, that for some reason it may be necessary to deactivate the conda environment and then active it again (and close the terminal) so that the `NiftyPET` package will be recognised in the specific path of the Python environment, and be thus importable (``import nipet``).
+.. warning::
 
+  Make sure to ``conda activate niftypet`` whenever opening a new terminal to ensure the correct environment is active.
+
+Jupyter Notebook
+^^^^^^^^^^^^^^^^
+
+Jupyter Notebooks are useful for sharing and replicating image reconstruction methods written in Python. They allow introspection, plotting and sharing of any intermediate results (e.g. sinograms and images generated during the reconstruction pipeline) or any end results. It is easiest to use ``conda`` to install Jupyter in the ``base`` environment in order to automatically pick up kernels for all other enviroments (``conda install --name base notebook``). See http://jupyter.readthedocs.io/en/latest/tryjupyter.html for more details and http://jupyter.readthedocs.io/en/latest/install.html for a manual installation.
+
+.. warning::
+
+  When using Jupyter, make sure to select the correct *kernel* (corresponding to the desired conda environment name) within the notebook.
 
 Post-installation checks
 ------------------------
 
+Configuration
+^^^^^^^^^^^^^
+
+A ``.niftypet`` folder is created during the installation (in ``$HOME`` or ``%APPDATA%``).
+Additional subfolders may be present corresponding to the ``conda`` environment name.
+Configuration information is stored in ``resources.py`` within this folder.
+
+.. warning::
+
+  It is recommended to rerun ``pip install`` rather than manually editing paths and device properties in ``resources.py``.
+
 Default CUDA device
-^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~
 
-The default CUDA device used for GPU calculations is chosen during the installation together with the CUDA architecture code compilation, which is specific for a given GPU device with a specific compute capability.  This information is stored in ``resources.py`` in ~/.niftypet/ folder, created during the installation (additional folder may be present corresponding to the ``conda`` environment).  For example, for the NVIDIA Titan Xp with compute capability of 6.1, it will look like this:
+The default CUDA device used for GPU calculations is chosen during the installation together with the corresponding optimal ``nvcc`` (CUDA compiler) flags. For example, for the NVIDIA Titan Xp with compute capability of 6.1, ``resources.py`` will have a section showing:
 
-::
+.. code:: python
 
   # DO NOT MODIFY BELOW--DONE AUTOMATICALLY
   ### start GPU properties ###
@@ -294,14 +305,14 @@ The default CUDA device used for GPU calculations is chosen during the installat
   CC_ARCH = '-gencode=arch=compute_61,code=compute_61;'
   ### stop GPU properties ###
 
-Any available (installed) CUDA devices can be chosen within Python for any image reconstruction or part of the reconstruction pipeline.
+Any available (installed) CUDA device can be chosen within Python for any image reconstruction or part of the reconstruction pipeline.
 
-Paths for the third-party software
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Search paths for third-party software
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If for some reason, the paths to the tools for image registration, resampling and conversion (DICOM -> NIfTI) are found incorrect, it can be checked by viewing ``resources.py`` file in ``~/.niftypet`` folder in Linux (for ``conda`` environment there will be an additional folder with the name of the environment, which contains ``resources.py``, specific for the environment).  In Windows, it is located in the local application data folder.   It is recommended that the paths and device properties are not manually edited, but are changed rather by rerunning the installation.
+Paths to tools for image registration, resampling, and conversion (DICOM -> NIfTI) can also be found in ``resources.py``:
 
-::
+.. code:: python
 
   # paths to apps and tools needed by NiftyPET
   ### start NiftyPET tools ###
@@ -312,10 +323,4 @@ If for some reason, the paths to the tools for image registration, resampling an
   HMUDIR = '/path/to/mmr_hardware_mumaps'
   ### end NiftyPET tools ###
 
-Note that the hardware :math:`\mu`-maps are not distributed with this software, and have to be obtained from the Siemens Biograph mMR scanner.
-
-
-Jupyter Notebook
-----------------
-
-Jupyter Notebook is a wonderful tool, useful for sharing and replicating image reconstruction methods written in Python.  It allows introspection, plotting and sharing of any intermediate results (e.g., sinograms and images generated during the  reconstruction pipeline) or any end result.  For this reason, it is best when Python and iPython are installed through Anaconda, which by default includes Jupyter Notebook.  See http://jupyter.readthedocs.io/en/latest/tryjupyter.html for more details and http://jupyter.readthedocs.io/en/latest/install.html for a manual installation.
+Note that the proprietary hardware :math:`\mu`-maps (``HMUDIR``) are not distributed with this software, and have to be obtained from the Siemens Biograph mMR scanner.
