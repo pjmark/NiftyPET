@@ -6,39 +6,44 @@ Installation
 
   **Quick note on ways of installation**
 
-  *Requirements (details below):*
+  *Requirements:*
 
-  - a compatible GPU device with CUDA divers & toolkit
-
-  - ``git``
-
-  - Python 3.6+
+  - An NVIDIA GPU with the `CUDA SDK/Toolkit`_ (including drivers) installed
+  - Git_
+  - Python 3.6 or greater (e.g. via `Anaconda or Miniconda`_)
 
   *Installation:*
 
-  .. code-block:: none
+  .. code:: sh
 
     pip install niftypet
 
   This will install all relevant packages, including nipet_ and nimpa_.
 
-  *Installation (advanced):*
+  .. tip::
 
-  .. code-block:: none
+    *Installation (advanced):*
 
-    git clone https://github.com/NiftyPET/NIMPA.git
-    git clone https://github.com/NiftyPET/NIPET.git
+    .. code:: sh
 
-    export PATHTOOLS=$HOME/NiftyPET_tools
-    export HMUDIR=$HOME/mmr_hardwareumaps
+      git clone https://github.com/NiftyPET/NIMPA.git
+      git clone https://github.com/NiftyPET/NIPET.git
 
-    conda install -c conda-forge python=3 \
-        numpy scipy scikit-image matplotlib ipykernel ipywidgets
-    pip install --verbose -e ./NIMPA
-    pip install --verbose -e ./NIPET
+      export PATHTOOLS=$HOME/NiftyPET_tools
+      export HMUDIR=$HOME/mmr_hardwareumaps
 
-  This will install an \"editable\" distribution at the source locations for both ``nimpa`` and ``nipet`` (allowing easy modification and/or updating using ``git pull``). Detailed steps for installation are given below.
+      conda install -c conda-forge python=3 \
+          numpy scipy scikit-image matplotlib ipykernel ipywidgets
+      pip install --verbose -e ./NIMPA
+      pip install --verbose -e ./NIPET
 
+    This will install an \"editable\" distribution at the source locations for both ``nimpa`` and ``nipet`` (allowing easy modification and/or updating using ``git pull``).
+
+  Detailed steps for installation are given below.
+
+.. _CUDA SDK/Toolkit: https://developer.nvidia.com/cuda-downloads
+.. _Git: https://git-scm.com/downloads
+.. _Anaconda or Miniconda: https://docs.conda.io/projects/conda/en/latest/user-guide/install/download.html#anaconda-or-miniconda
 .. _nipet: https://github.com/NiftyPET/NIPET
 .. _nimpa: https://github.com/NiftyPET/NIMPA
 
@@ -51,172 +56,175 @@ Dependencies
 Hardware
 ^^^^^^^^
 
-* **GPU device**: Supported are GPU devices from NVIDIA with the compute capability of at least 3.5 (e.g., NVIDIA Tesla K20/40).  It is recommended to have at least 5 GB of GPU memory.  *NiftyPET* supports multiple CUDA devices and so far, the following devices have been tested with *NiftyPET*:
+- **GPU device**: One or more GPU devices from NVIDIA with a CUDA compute capability of at least 3.5. It is also recommended to have at least 5 GB of GPU memory. The following devices have been tested with *NiftyPET*:
 
-   * NVIDIA Tesla K20/40,
-   * NVIDIA Titan Xp,
-   * NVIDIA GeForce GTX 1060,
-   * NVIDIA GeForce GTX 1080 /Ti,
-   * NVIDIA  Tesla V100.
+  * NVIDIA Tesla K20/40,
+  * NVIDIA Titan Xp,
+  * NVIDIA Quadro P6000,
+  * NVIDIA GeForce GTX 1060,
+  * NVIDIA GeForce GTX 1080/Ti/Max-Q, and
+  * NVIDIA  Tesla V100.
 
-* **CPU host**: The GPU device can be accessed by a CPU host, with a reasonable computing power for some other image processing routines (e.g., image registration, etc.).  It is recommended to have at least 16 GB of RAM, although we have managed to run dynamic reconstruction using old PC workstations with as little as 11 GB of RAM.
+- **CPU host**: The GPU device can be accessed by a CPU host, with a reasonable computing power for some other image processing routines (e.g. image registration, etc.).  It is recommended to have at least 16 GB of RAM, although we have managed to run dynamic reconstruction using old PC workstations with as little as 11 GB of RAM.
 
 Software
 ^^^^^^^^
 
-*NitfyPET* installation needs pre-installed the following software:
+*NitfyPET* installation needs the following software pre-installed:
 
-* **C/C++ compiler**: **GCC** is used in Linux systems, while for Windows Visual Studio is used (see below for Windows installation).
+- **C/C++ compiler**
 
-  On Linux systems it can be installed as follows:
+  *GCC* and *Clang* are commonly using on Linux systems, and *Visual Studio* on Windows.
 
-  * Ubuntu:
+  * Ubuntu Linux:
 
-    .. code-block:: none
+    .. code:: sh
 
       apt-get install build-essential
 
+  * CentOS Linux:
 
-  * CentOS:
-
-    .. code-block:: none
+    .. code:: sh
 
       yum group install "Development Tools"
 
+  * Windows: `Visual Studio <https://visualstudio.microsoft.com>`_
 
-*  **CUDA toolkit**: a parallel computing platform and programming model, which includes CUDA compiler (NVCC) and runtime API.  The latest CUDA toolkit can be obtained for free from https://developer.nvidia.com/cuda-downloads.  For any specific operating system follow the CUDA installation guide at https://docs.nvidia.com/cuda/index.html.
+- **CUDA GPU & Software**
+
+  The `CUDA SDK/Toolkit`_ (click the link to download) is a parallel computing platform and programming model. This includes the CUDA compiler (``nvcc``) and runtime API. For extra guidance, consult the `CUDA documentation <https://docs.nvidia.com/cuda>`_.
 
   .. tip::
 
-    In CentOS, it is necessary to install DKMS (Dynamic Kernel Module Support), which can be obtained from https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm. Then, it can be installed as follows:
+    In CentOS, it is necessary to install DKMS (Dynamic Kernel Module Support). Download from `here <https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm>`_ and install as follows:
 
-    .. code-block:: none
+    .. code:: sh
 
       rpm -ivh epel-release-latest-7.noarch.rpm
       yum -y install dkms
 
+  .. tip::
 
-  Make sure that CUDA is installed with appropriate paths to CUDA resources setup, that is, for CUDA 10.0 on Linux systems, it is:
+    Make sure that CUDA is installed with appropriate paths to CUDA resources setup, e.g. on Linux systems:
 
-  .. code-block:: none
+    .. code:: sh
 
-    export PATH=/usr/local/cuda-10.0/bin:$PATH
-    export LD_LIBRARY_PATH=/usr/local/cuda-10.0/lib64:$LD_LIBRARY_PATH
+      export PATH="/usr/local/cuda/bin:$PATH"
+      export LD_LIBRARY_PATH="/usr/local/cuda/lib64:$LD_LIBRARY_PATH"
 
-  This can be added to ``.profile`` or ``.bashrc`` file in your home directory (Linux). For more details see http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions.
+    This can be added to ``~/.profile`` or ``~/.bashrc`` files. For more details see http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html#post-installation-actions.
 
+- **Git**
 
-* **Git**: a version control system, used for downloading *NiftyPET* and other necessary tools, i.e.: ``NiftyReg`` and ``dcm2niix``. For more details on installing ``git`` see https://git-scm.com/book/en/v2/Getting-Started-Installing-Git.
+  Git_ is a version control system used for downloading *NiftyPET* and other necessary tools, i.e. *NiftyReg* and ``dcm2niix``. For more details on installing ``git`` see https://git-scm.com/book/en/v2/Getting-Started-Installing-Git.
 
   On Linux systems it can be installed as follows:
 
-  * Ubuntu:
+  * Ubuntu Linux:
 
-    .. code-block:: none
+    .. code:: sh
 
       apt-get install git
 
-  * CentOS:
+  * CentOS Linux:
 
-    .. code-block:: none
+    .. code:: sh
 
       yum install git
 
-* **cmake**: a tool for cross-platform software package building, which can be downloaded freely from https://cmake.org/install/. For the Ubuntu distribution, cmake together with the user GUI can be installed as follows:
+  * Windows: Git_
 
-  .. code-block:: none
+- **Python 3.6** or greater
 
-    sudo apt-get update
-    sudo apt-get install cmake cmake-curses-gui
+  A free high-level programming language, through which all the GPU routines are available for the user.
+  The easiest way to run *NiftyPET* in Python is by using the `Anaconda or Miniconda`_ distributions.
 
   .. tip::
 
-    For CentOS, it is recommended to install ``cmake`` from source from the above website for the latest version (version 3).  Binary and source distributions are provided.
+    *Optional Python packages*
 
+    *Jupyter Notebook* (``notebook``) is a useful development interface.
 
-* **Python 2.7**: a free high-level programming language, through which all the GPU routines are available for the user.
-  The easiest way to run *NiftyPET* in Python is by using the Anaconda distribution which includes ``Jupyter Notebook``.  To download Anaconda visit https://www.anaconda.com/download/ and choose Python 2.7.
+    Additionally, when using Anacoda or Minconda, it is recommended to use ``conda`` to install some dependencies rather than rely on NiftyPET to automatically install them via ``pip``.
 
-* **Required Python packages**: If another distribution of Python is used, make sure that the following standard Python packages are installed: ``scipy``, ``numpy``, ``matplotlib``, ``math`` (these are supplied by default in the Anaconda distribution).
+    .. code:: sh
 
-  * **Specialised Python packages**: the following packages for medical image I/O and manipulation are automatically installed during NiftyPET installation (not distributed by default):
-
-    * ``nibabel``: http://nipy.org/nibabel/
-    * ``pydicom``: http://pydicom.readthedocs.io/en/stable/getting_started.html#installing
-
-    If for whatever reason the automatic installation fails, the two packages can be installed together as follows:
-
-    .. code-block:: none
-
-      conda install -c conda-forge nibabel
-      conda install -c conda-forge pydicom
-
+      # useful mathematical & plotting libraries
+      conda install -c conda-forge python=3 numpy scipy scikit-image matplotlib nibabel pydicom
+      # jupyter noebook support
+      conda install -c conda-forge python=3 ipykernel ipywidgets
 
 .. _niftypet-install:
-
 
 *NiftyPET* installation
 -----------------------
 
+.. tip::
+
+  To avoid prompts during installation, specify configuration directories in advance:
+
+  .. code:: sh
+
+    export PATHTOOLS=$HOME/NiftyPET_tools
+    export HMUDIR=$HOME/mmr_hardwareumaps
+
 Using ``pip``
 ^^^^^^^^^^^^^
 
-* NiftyPET:``nimpa``
+To install the entire suite of packages, use:
 
-  To install ``nimpa`` with CUDA source compilation for the given CUDA version and operating system (Linux is preferred), simply type:
+.. code:: sh
 
-  .. code-block:: none
+  pip install niftypet
 
-    pip install --no-binary :all: --verbose nimpa
+.. tip::
 
-* NiftyPET:``nipet``
+  Instead of installing everything, follow these steps to install individual components separately.
 
-  To install ``nipet``, the core of NiftyPET image reconstruction, type:
+  * nimpa_
 
-  .. code-block:: none
+    .. code:: sh
 
-    pip install --no-binary :all: --verbose nipet
+      pip install --verbose nimpa
 
+  * nipet_
 
-  This will also install ``nimpa`` if it is not yet installed and will compile the CUDA C source code for the user's Linux system and CUDA version (>=7.0).
+    The core of NiftyPET image reconstruction.
 
-From source using ``git`` and ``pip``/``setup.py``
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    .. code:: sh
+
+      pip install --verbose nipet
+
+    This will also install nimpa_ if not already present.
+
+From source
+^^^^^^^^^^^
 
 The source code of full version of ``nimpa`` and ``nipet`` packages can be downloaded to a specific folder using ``git`` as follows:
 
-::
+.. code:: sh
 
   git clone https://github.com/NiftyPET/NIMPA.git
   git clone https://github.com/NiftyPET/NIPET.git
 
-Alternatively, it can also be downloaded with an `SSH` key pair setup:
-
-::
-
-  git clone git@github.com:NiftyPET/NIMPA.git
-  git clone git@github.com:NiftyPET/NIPET.git
 
 After a successful download, navigate to folder ``nimpa`` and run inside one of the following:
 
-::
+1) ``pip install --verbose .``
+2) ``pip install --verbose -e .``
 
-  1) python setup.py install
-  2) pip install --no-binary :all: --verbose .
-  3) pip install --no-binary :all: --verbose -e .
-
-The last option with the ``-e`` makes the installation \"editable\", alowing the user to modify the source code themselves or by pulling newer versions from ``git`` using ``git pull``.
+The last option with the ``-e`` makes the installation \"editable\", allowing the user to modify the source code themselves or by pulling newer versions from ``git`` using ``git pull``.
 
 Identically for ``nipet``, run one of the following:
 
-::
+1) ``pip install --verbose .``
+2) ``pip install --verbose -e .``
 
-  1) python setup.py install
-  2) pip install --no-binary :all: --verbose .
-  3) pip install --no-binary :all: --verbose -e .
+The installation will download and call on ``cmake``, which will run automatically and generate Ninja files, and then run ``ninja`` to build all the CUDA C routines and Python C extensions. Following this, the compiled Python modules will be installed into the specific Python package location.
 
+.. warning::
 
-The installation will call on ``cmake``, which will run automatically and generate make files, and then run ``make`` to build all the CUDA C routines and Python C extensions.  Following this, the compiled Python modules will be installed into the specific Python package location.
+  Do we need the rest of this? Maybe move elsewhere?
 
 Third party software installed with *NiftyPET*
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
