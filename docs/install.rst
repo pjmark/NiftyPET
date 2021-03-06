@@ -20,7 +20,7 @@ Installation
 
     pip install niftypet
 
-  This will install all relevant packages, including `nipet <https://github.com/NiftyPET/NIPET>`_ and `nimpa <https://github.com/NiftyPET/NIMPA>`_.
+  This will install all relevant packages, including nipet_ and nimpa_.
 
   *Installation (advanced):*
 
@@ -39,6 +39,8 @@ Installation
 
   This will install an \"editable\" distribution at the source locations for both ``nimpa`` and ``nipet`` (allowing easy modification and/or updating using ``git pull``). Detailed steps for installation are given below.
 
+.. _nipet: https://github.com/NiftyPET/NIPET
+.. _nimpa: https://github.com/NiftyPET/NIMPA
 
 *NiftyPET* is a `Python namespace package <https://packaging.python.org/guides/packaging-namespace-packages>`_, primarily encompassing the two packages ``nimpa`` and ``nipet``. Currently, these are available for Python 3.6 or greater for Linux and Windows systems. It has been deployed and tested on CentOS 6.8 and 7, Ubuntu 14.04, 16.04, 18.04 and 20.04, as well as Windows 10 (limited) -- including Python C extensions for the core CUDA routines. Linux systems are recommended due to their robustness and stability (support for Windows is comparatively limited).
 
