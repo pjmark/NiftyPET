@@ -154,6 +154,7 @@ Software
 
 .. _niftypet-install:
 
+
 *NiftyPET* installation
 -----------------------
 
@@ -275,6 +276,7 @@ Jupyter Notebooks are useful for sharing and replicating image reconstruction me
 .. warning::
 
   When using Jupyter, make sure to select the correct *kernel* (corresponding to the desired conda environment name) within the notebook.
+
 
 Post-installation checks
 ------------------------

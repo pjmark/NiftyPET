@@ -48,6 +48,8 @@ We gratefully acknowledge the support of `NVIDIA Corporation <https://www.nvidia
 | |EFPIA|  | |IMI|    | |EU|     |
 +----------+----------+----------+
 
+|Licence|
+
 Copyright 2018-21
 
 - `Pawel J. Markiewicz <https://github.com/pjmark>`__ @ University College London
@@ -58,6 +60,8 @@ Copyright 2018-21
    :target: https://niftypet.readthedocs.io/en/latest
 .. |Tests| image:: https://img.shields.io/github/workflow/status/NiftyPET/NiftyPET/Test?logo=GitHub
    :target: https://github.com/NiftyPET/NiftyPET/actions
+.. |Licence| image:: https://img.shields.io/pypi/l/niftypet.svg?label=licence
+   :target: https://github.com/NiftyPET/NiftyPET/blob/master/LICENCE
 .. |brain1| image:: ./docs/images/gim_magna_t.gif
    :width: 45%
 .. |brain2| image:: ./docs/images/gim_magna_c.gif
