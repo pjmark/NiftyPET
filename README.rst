@@ -1,42 +1,29 @@
-.. image:: ./docs/logos/ucl.png
-   :target: https://www.ucl.ac.uk/
+|UCL|
 
 ===========================================================
 NiftyPET: High-throughput image reconstruction and analysis
 ===========================================================
 
-.. image:: https://readthedocs.org/projects/niftypet/badge/?version=latest
-  :target: https://niftypet.readthedocs.io/en/latest/?badge=latest
-  :alt: Documentation Status
+|Docs| |Tests|
 
+**Documentation**: https://niftypet.readthedocs.io
 
-
-**Documentation**: https://niftypet.readthedocs.io/
-
-
-|pic1| |pic2|
-
-.. |pic1| image:: ./docs/images/gim_magna_t.gif
-   :width: 45%
-
-.. |pic2| image:: ./docs/images/gim_magna_c.gif
-   :width: 45%
+|brain1| |brain2|
 
 .. ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 .. taken from docs/highlights.rst
 
-*NiftyPET* is a software platform and a Python namespace package encompassing sub-packages for high-throughput PET image reconstruction, manipulation, processing and analysis with high quantitative accuracy and precision.  See below for the description of the above image, reconstructed using *NiftyPET* [*]_.  
+*NiftyPET* is a software platform and a Python namespace package encompassing sub-packages for high-throughput PET image reconstruction, manipulation, processing and analysis with high quantitative accuracy and precision.  See below for the description of the above image, reconstructed using *NiftyPET* [*]_.
 
 *NiftyPET* includes two packages:
 
-  * ``nimpa``:  https://github.com/NiftyPET/NIMPA (neuro-image manipulation, processing and analysis)
-  * ``nipet``:  https://github.com/NiftyPET/NIPET (quantitative PET neuro-image reconstruction)
+- ``nimpa``:  https://github.com/NiftyPET/NIMPA (neuro-image manipulation, processing and analysis)
+- ``nipet``:  https://github.com/NiftyPET/NIPET (quantitative PET neuro-image reconstruction)
 
 The core routines are written in CUDA C and embedded in Python C extensions.  The scientific aspects of this software platform are covered in two open-access publications:
 
-* *NiftyPET: a High-throughput Software Platform for High Quantitative Accuracy and Precision PET Imaging and Analysis* Neuroinformatics (2018) 16:95. https://doi.org/10.1007/s12021-017-9352-y
-
-* *Rapid processing of PET list-mode data for efficient uncertainty estimation and data analysis* Physics in Medicine & Biology (2016). https://doi.org/10.1088/0031-9155/61/13/N322
+- *NiftyPET: a High-throughput Software Platform for High Quantitative Accuracy and Precision PET Imaging and Analysis* Neuroinformatics (2018) 16:95. https://doi.org/10.1007/s12021-017-9352-y
+- *Rapid processing of PET list-mode data for efficient uncertainty estimation and data analysis* Physics in Medicine & Biology (2016). https://doi.org/10.1088/0031-9155/61/13/N322
 
 .. [*] The above dynamic transaxial and coronal images show the activity of  :sup:`18`\ F-florbetapir during the one-hour dynamic acquisition.  Note that the signal in the brain white matter dominates over the signal in the grey matter towards the end of the acquisition, which is a typical presentation of a negative amyloid beta (Abeta) scan.
 
@@ -55,35 +42,41 @@ This project is being developed at University College London (`UCL <https://www.
 
 We gratefully acknowledge the support of `NVIDIA Corporation <https://www.nvidia.com>`_  with the donation of the Tesla K20 and Titan X Pascal GPUs used for this research and work.
 
-+---------+---------+---------+
-| |logo7| | |logo8| | |logo3| |
-+---------+---------+---------+
++----------+----------+----------+
+| |AMYPAD| | |DPUK|   | |NVIDIA| |
++----------+----------+----------+
+| |EFPIA|  | |IMI|    | |EU|     |
++----------+----------+----------+
 
-+---------+-----------+---------+
-| |logo4| +  |logo5|  + |logo6| |
-+---------+-----------+---------+
+|Licence|
 
+Copyright 2018-21
 
+- `Pawel J. Markiewicz <https://github.com/pjmark>`__ @ University College London
+- `Casper O. da Costa-Luis <https://github.com/casperdcl>`__ @ King's College London
+- `Contributors <https://github.com/NiftyPET/NiftyPET/graphs/contributors>`__
 
-.. |logo3| image:: ./docs/logos/Nvidia_logo.png
-   :target: https://www.nvidia.com/en-us/research/
-
-.. |logo4| image:: ./docs/logos/efpia.jpg
+.. |Docs| image:: https://readthedocs.org/projects/niftypet/badge/?version=latest
+   :target: https://niftypet.readthedocs.io/en/latest
+.. |Tests| image:: https://img.shields.io/github/workflow/status/NiftyPET/NiftyPET/Test?logo=GitHub
+   :target: https://github.com/NiftyPET/NiftyPET/actions
+.. |Licence| image:: https://img.shields.io/pypi/l/niftypet.svg?label=licence
+   :target: https://github.com/NiftyPET/NiftyPET/blob/master/LICENCE
+.. |brain1| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/images/gim_magna_t.gif
+   :width: 45%
+.. |brain2| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/images/gim_magna_c.gif
+   :width: 45%
+.. |UCL| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/ucl.png
+   :target: https://www.ucl.ac.uk
+.. |NVIDIA| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/Nvidia_logo.png
+   :target: https://www.nvidia.com/en-us/research
+.. |EFPIA| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/efpia.jpg
    :target: https://www.efpia.eu/
-
-.. |logo5| image:: ./docs/logos/imi.jpg
+.. |IMI| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/imi.jpg
    :target: https://www.imi.europa.eu/
-
-.. |logo6| image:: ./docs/logos/eu.png
+.. |EU| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/eu.png
    :target: https://europa.eu/european-union/index_en
-
-.. |logo7| image:: ./docs/logos/amypad.jpg
+.. |AMYPAD| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/amypad.jpg
    :target: https://amypad.eu/
-
-.. |logo8| image:: ./docs/logos/dpuk.jpg
-   :target: https://www.dementiasplatform.uk/
-
-
-Author and developer: Pawel J. Markiewicz @ University College London
-
-Copyright 2018
+.. |DPUK| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/dpuk.jpg
+   :target: https://www.dementiasplatform.uk

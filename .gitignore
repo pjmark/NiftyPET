@@ -1,0 +1,4 @@
+*.py[co]
+__pycache__/
+/dist/
+.ipynb_checkpoints/

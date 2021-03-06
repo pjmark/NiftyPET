@@ -27,6 +27,7 @@ NiftyPET: High-throughput image reconstruction and analysis
    :maxdepth: 2
    :caption: Tutorials
 
+   tutorials/demo
    tutorials/gpuaccess.rst
    tutorials/anonym.rst
    tutorials/lmproc.rst
