@@ -62,21 +62,21 @@ Copyright 2018-21
    :target: https://github.com/NiftyPET/NiftyPET/actions
 .. |Licence| image:: https://img.shields.io/pypi/l/niftypet.svg?label=licence
    :target: https://github.com/NiftyPET/NiftyPET/blob/master/LICENCE
-.. |brain1| image:: ./docs/images/gim_magna_t.gif
+.. |brain1| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/images/gim_magna_t.gif
    :width: 45%
-.. |brain2| image:: ./docs/images/gim_magna_c.gif
+.. |brain2| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/images/gim_magna_c.gif
    :width: 45%
-.. |UCL| image:: ./docs/logos/ucl.png
+.. |UCL| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/ucl.png
    :target: https://www.ucl.ac.uk
-.. |NVIDIA| image:: ./docs/logos/Nvidia_logo.png
+.. |NVIDIA| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/Nvidia_logo.png
    :target: https://www.nvidia.com/en-us/research
-.. |EFPIA| image:: ./docs/logos/efpia.jpg
+.. |EFPIA| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/efpia.jpg
    :target: https://www.efpia.eu/
-.. |IMI| image:: ./docs/logos/imi.jpg
+.. |IMI| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/imi.jpg
    :target: https://www.imi.europa.eu/
-.. |EU| image:: ./docs/logos/eu.png
+.. |EU| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/eu.png
    :target: https://europa.eu/european-union/index_en
-.. |AMYPAD| image:: ./docs/logos/amypad.jpg
+.. |AMYPAD| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/amypad.jpg
    :target: https://amypad.eu/
-.. |DPUK| image:: ./docs/logos/dpuk.jpg
+.. |DPUK| image:: https://raw.githubusercontent.com/NiftyPET/NiftyPET/master/docs/logos/dpuk.jpg
    :target: https://www.dementiasplatform.uk
