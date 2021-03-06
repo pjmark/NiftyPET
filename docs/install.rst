@@ -58,12 +58,10 @@ Hardware
 
 - **GPU device**: One or more GPU devices from NVIDIA with a CUDA compute capability of at least 3.5. It is also recommended to have at least 5 GB of GPU memory. The following devices have been tested with *NiftyPET*:
 
-  * NVIDIA Tesla K20/40,
-  * NVIDIA Titan Xp,
-  * NVIDIA Quadro P6000,
-  * NVIDIA GeForce GTX 1060,
-  * NVIDIA GeForce GTX 1080/Ti/Max-Q, and
-  * NVIDIA  Tesla V100.
+  * NVIDIA Tesla K20/K40/V100
+  * NVIDIA Titan Xp/RTX
+  * NVIDIA Quadro P4000/P6000
+  * NVIDIA GeForce GTX 1060/1080/1080 Ti/1080 Max-Q
 
 - **CPU host**: The GPU device can be accessed by a CPU host, with a reasonable computing power for some other image processing routines (e.g. image registration, etc.).  It is recommended to have at least 16 GB of RAM, although we have managed to run dynamic reconstruction using old PC workstations with as little as 11 GB of RAM.
 
