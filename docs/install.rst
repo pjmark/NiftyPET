@@ -178,6 +178,19 @@ To install the entire suite of packages, use:
 
 .. tip::
 
+  In case this fails, make sure Python and NVIDIA's CUDA compiler are available on the system path. On Linux, for example, these commands should all succeed:
+
+  .. code:: sh
+
+    python3 --version
+    g++ --version
+    nvcc --version
+    git --version
+
+  If all of the above commands succeed yet the installation fails, open a support request by posting the versions and error output to https://github.com/NiftyPET/NiftyPET/issues/new.
+
+.. tip::
+
   Instead of installing everything, follow these steps to install individual components separately.
 
   * nimpa_
